@@ -1,11 +1,16 @@
 classic-up:
-	make -C classic-config/ up
-
+	make -C classic/ up
 classic-down:
-	make -C classic-config/ down
+	make -C classic/ down
 
-classic-start:
-	make -C classic-config/ start	
 
-classic-stop:
-	make -C classic-config/ stop	
+script-up:
+	make -C script/ up
+script-down:
+	make -C script/ down
+
+dns-up:
+	make -C dns/ up
+dns-down:
+	make -C dns/ down
+
