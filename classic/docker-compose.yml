@@ -21,21 +21,17 @@ services:
           "CMD-SHELL",
           "rabbitmq-diagnostics -q check_running || exit 1"
         ]
-      interval: 10s
+      interval: 20s
       timeout: 10s
       retries: 10
       start_period: 10s
 
   rabbit-2:
-    &rabbit2
     <<: *rabbit
     hostname: "rabbit-2"
-    depends_on:
-      rabbit-1:
-        condition: service_healthy
 
   rabbit-3:
-    <<: *rabbit2
+    <<: *rabbit
     hostname: "rabbit-3"
 
   nginx:

@@ -1,7 +1,7 @@
-# rabbit-docker-cluster
+# RabbitMQ Docker Clustering
 [RabbitMQ](https://www.rabbitmq.com/) clustering on [Docker](https://www.docker.com/) using different clustering approaches.
 
-## Clusterting Methods 
+## Clustering Methods 
 1. [Script](./script)  
 Uses [rabbitmqctl](https://www.rabbitmq.com/rabbitmqctl.8.html) commands to join the cluster.
 1. [Peer Discovery classic Config](./classic)  
