@@ -14,3 +14,10 @@ dns-up:
 dns-down:
 	make -C dns/ down
 
+test: classic-up
+	docker run \
+		--network=classic_default \
+		--rm \
+		-v ${PWD}/tests:/etc/newman/ \
+		postman/newman:alpine \
+		run rabbit_collection.json -e rabbit_env.json

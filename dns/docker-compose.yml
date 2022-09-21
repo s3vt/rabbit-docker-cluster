@@ -12,9 +12,9 @@ services:
       - "25672"
     volumes:
       - ./rabbit_seed.conf:/config/rabbit.conf
+      - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie:ro
     environment:
       - RABBITMQ_CONFIG_FILE=/config/rabbit.conf
-      - RABBITMQ_ERLANG_COOKIE=WIWVHCDTCIUAWANLMQAW
     healthcheck:
       test:
         [
@@ -30,6 +30,7 @@ services:
     <<: *rabbitseed
     volumes:
       - ./rabbit_slave.conf:/config/rabbit.conf
+      - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie:ro
     hostname: "rabbitworker"
     depends_on:
       rabbitseed:

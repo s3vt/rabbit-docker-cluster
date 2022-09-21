@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 echo "Starting node at ${HOSTNAME} with cluster at ${CLUSTER_SEED}"
 
-docker-entrypoint.sh rabbitmq-server -detached
+/usr/local/bin/docker-entrypoint.sh rabbitmq-server -detached
 
 # Set result before starting 
 res=1
@@ -22,7 +22,9 @@ echo "Node has started at ${HOSTNAME}, Joining cluster ${CLUSTER_SEED}"
 rabbitmqctl --quiet stop_app
 rabbitmqctl --quiet reset 
 rabbitmqctl --quiet join_cluster ${CLUSTER_SEED}
+
+echo "Node has joined cluster ${CLUSTER_SEED}, restarting rabbitmq-server"
 rabbitmqctl --quiet stop
 
 echo "Starting server again"
-docker-entrypoint.sh rabbitmq-server
+/usr/local/bin/docker-entrypoint.sh rabbitmq-server
